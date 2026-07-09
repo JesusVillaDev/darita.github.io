@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Synchronized</title>
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;700;800&family=Playfair+Display:wght@400;700;900&family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
   <style>
     * {
       margin: 0;
@@ -14,63 +14,60 @@
 
     body {
       font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif;
-      background: linear-gradient(135deg, #fff5f7 0%, #ffe8ef 50%, #ffddee 100%);
+      /* Fondo general oscuro/romántico para que todo flote sin separaciones */
+      background: linear-gradient(135deg, #1a0a12 0%, #2d0f1e 40%, #1f0815 100%);
       height: 100vh;
       padding: 0;
       overflow: hidden;
+      color: #fff;
     }
 
-    /* ===== HEADER ===== */
-    .header {
-      background: rgba(255, 255, 255, 0.85);
-      backdrop-filter: blur(20px);
-      -webkit-backdrop-filter: blur(20px);
-      padding: 14px 40px;
-      box-shadow: 0 4px 30px rgba(255, 20, 147, 0.08);
-      border-bottom: 1px solid rgba(255, 105, 180, 0.15);
-      animation: headerSlideDown 1s cubic-bezier(0.16, 1, 0.3, 1) forwards;
-      opacity: 0;
-      transform: translateY(-100%);
-    }
-
-    .header h1 {
-      font-family: 'Playfair Display', serif;
-      font-size: 1.3rem;
-      font-weight: 900;
-      background: linear-gradient(135deg, #ff1493 0%, #e91e8c 40%, #ff69b4 100%);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
-      letter-spacing: -0.5px;
-      text-align: center;
+    /* Fondo sutil global con destellos */
+    body::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background:
+        radial-gradient(circle at 20% 30%, rgba(255, 20, 147, 0.05) 0%, transparent 50%),
+        radial-gradient(circle at 80% 70%, rgba(255, 105, 180, 0.04) 0%, transparent 50%),
+        radial-gradient(circle at 50% 50%, rgba(219, 39, 119, 0.03) 0%, transparent 60%);
+      pointer-events: none;
+      z-index: 0;
     }
 
     /* ===== LAYOUT ===== */
     .container {
       width: 100%;
-      height: calc(100vh - 52px);
-      padding: 15px;
+      height: 100vh;
+      padding: 20px 40px;
+      position: relative;
+      z-index: 1;
     }
 
     .content {
       display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 15px;
+      grid-template-columns: 4fr 6fr; /* Modificado: 40% imágenes, 60% texto para dar más espacio a la letra */
+      gap: 40px;
       height: 100%;
     }
 
-    /* ===== ZONA 1: Imágenes directas ===== */
+    /* ===== ZONA 1: Imágenes con perspectiva 3D ===== */
     .zone-1 {
       border-radius: 15px;
       overflow: hidden;
       position: relative;
       box-shadow:
-        0 25px 60px -12px rgba(255, 20, 147, 0.2),
+        0 30px 60px -15px rgba(0, 0, 0, 0.6),
         0 0 0 1px rgba(255, 105, 180, 0.15);
-      animation: zoneSlideIn 1s cubic-bezier(0.16, 1, 0.3, 1) 0.2s forwards;
+      animation: zoneSlideIn 1.2s cubic-bezier(0.16, 1, 0.3, 1) 0.2s forwards;
       opacity: 0;
-      transform: translateX(-60px) scale(0.95);
-      background: linear-gradient(135deg, #ffe0e6 0%, #fff5f7 50%, #fce4ec 100%);
+      transform-style: preserve-3d;
+      /* Estado inicial de la animación */
+      transform: perspective(1200px) rotateY(12deg) rotateX(4deg) translateX(-60px) scale(0.95);
+      background: rgba(0,0,0,0.2);
     }
 
     .image-slide {
@@ -102,43 +99,22 @@
 
     .image-slide.no-image {
       font-size: 5rem;
-      background: linear-gradient(135deg, #ffe0e6 0%, #fff5f7 50%, #fce4ec 100%);
+      background: rgba(255, 255, 255, 0.05);
     }
 
-    /* ===== ZONA 2: Letras flotantes ===== */
+    /* ===== ZONA 2: Letras flotantes (Sin contenedor) ===== */
     .zone-2 {
-      border-radius: 15px;
-      overflow: hidden;
       position: relative;
       display: flex;
       flex-direction: column;
       justify-content: center;
       align-items: center;
-      animation: zoneSlideInRight 1s cubic-bezier(0.16, 1, 0.3, 1) 0.35s forwards;
+      animation: zoneSlideInRight 1.2s cubic-bezier(0.16, 1, 0.3, 1) 0.35s forwards;
       opacity: 0;
       transform: translateX(60px) scale(0.95);
-      background: linear-gradient(160deg, #1a0a12 0%, #2d0f1e 30%, #1f0815 60%, #120610 100%);
-      box-shadow:
-        0 25px 60px -12px rgba(255, 20, 147, 0.2),
-        0 0 0 1px rgba(255, 105, 180, 0.15);
     }
 
-    /* Fondo sutil de la zona 2 */
-    .zone-2::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background:
-        radial-gradient(circle at 20% 30%, rgba(255, 20, 147, 0.08) 0%, transparent 50%),
-        radial-gradient(circle at 80% 70%, rgba(255, 105, 180, 0.06) 0%, transparent 50%),
-        radial-gradient(circle at 50% 50%, rgba(219, 39, 119, 0.04) 0%, transparent 60%);
-      pointer-events: none;
-      z-index: 0;
-    }
-
+    /* ===== CORAZONES FLOTANTES ===== */
     .floating-hearts {
       position: absolute;
       top: 0;
@@ -152,7 +128,7 @@
 
     .floating-heart {
       position: absolute;
-      font-size: 1.2rem;
+      bottom: -40px; /* Inician desde abajo del contenedor */
       opacity: 0;
       animation: floatHeart linear infinite;
       filter: blur(0.5px);
@@ -161,27 +137,24 @@
     @keyframes floatHeart {
       0% {
         opacity: 0;
-        transform: translateY(100%) rotate(0deg) scale(0.5);
+        transform: translateY(0) scale(0.5);
       }
-      10% {
-        opacity: 0.3;
+      20% {
+        opacity: 0.6; /* Entran con degradado subiendo opacidad */
       }
-      50% {
-        opacity: 0.15;
-      }
-      90% {
-        opacity: 0.05;
+      80% {
+        opacity: 0.6;
       }
       100% {
         opacity: 0;
-        transform: translateY(-120%) rotate(360deg) scale(1.2);
+        transform: translateY(-80vh) scale(1.2); /* Flotan hacia arriba */
       }
     }
 
-    /* Intro section */
+    /* ===== INTRO SECTION ===== */
     .intro-section {
       text-align: center;
-      z-index: 2;
+      z-index: 3;
       position: relative;
       padding: 40px;
       animation: introFadeIn 1.2s cubic-bezier(0.16, 1, 0.3, 1) 0.6s forwards;
@@ -190,10 +163,10 @@
     }
 
     .intro-title {
-      font-family: 'Playfair Display', serif;
-      font-size: 2rem;
+      font-family: 'Montserrat', sans-serif;
+      font-size: 1.4rem;
       font-weight: 900;
-      background: linear-gradient(135deg, #ff69b4 0%, #ff1493 50%, #ff85c8 100%);
+      background: linear-gradient(135deg, #ffb6c1 0%, #ff69b4 50%, #ff1493 100%);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
       background-clip: text;
@@ -202,11 +175,12 @@
     }
 
     .intro-text {
-      color: rgba(255, 182, 213, 0.7);
+      color: rgba(255, 255, 255, 0.7);
       font-size: 1rem;
       line-height: 1.7;
       margin-bottom: 35px;
       font-weight: 300;
+      text-align: justify;
     }
 
     .start-btn {
@@ -259,48 +233,69 @@
       transform: translateY(-1px) scale(0.98);
     }
 
-    /* ===== LETRAS FLOTANTES ===== */
+    /* ===== LETRAS ESTILO SPOTIFY ===== */
     .lyric-wrapper {
-      position: relative;
+      position: absolute;
+      top: 0;
+      left: 0;
       z-index: 2;
+      width: 100%;
+      height: 100%;
+      padding: 0 20px;
+      overflow: hidden;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 1s ease 0.3s;
+      /* Máscara de desvanecido arriba y abajo */
+      mask-image: linear-gradient(to bottom, transparent 0%, black 15%, black 85%, transparent 100%);
+      -webkit-mask-image: linear-gradient(to bottom, transparent 0%, black 15%, black 85%, transparent 100%);
+    }
+
+    .lyric-wrapper.visible {
+      opacity: 1;
+      pointer-events: auto;
+    }
+
+    .lyric-scroll-container {
       display: flex;
       flex-direction: column;
       align-items: center;
-      justify-content: center;
       width: 100%;
-      height: 100%;
-      padding: 30px;
+      /* Transición suave para el efecto de scroll */
+      transition: transform 0.6s cubic-bezier(0.25, 1, 0.5, 1);
+      transform: translateY(0);
+      /* Padding para permitir centrar la primera y última línea */
+      padding: 50vh 0; 
     }
 
     .lyric-line {
-      font-family: 'Playfair Display', serif;
-      font-size: 1.8rem;
-      font-weight: 700;
-      color: transparent;
-      line-height: 1.5;
+      font-family: 'Montserrat', sans-serif;
       text-align: center;
-      position: absolute;
-      margin: 6px 0;
-      opacity: 0;
-      transform: translateY(25px) translateZ(0);
-      transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
-      /* Floating depth effect */
+      line-height: 1.4;
+      max-width: 95%;
+      padding: 15px 0;
+      font-size: 1.25rem;
+      font-weight: 700;
+      color: rgba(255, 255, 255, 0.3); /* Letras inactivas más oscuras */
+      transition: all 0.5s cubic-bezier(0.25, 1, 0.5, 1);
+      transform: scale(0.9);
+      cursor: default;
+    }
+
+    .lyric-line.active {
+      font-size: 2.1rem; /* Letra actual brillante y grande */
       background: linear-gradient(180deg, #ffffff 0%, #ffcce0 100%);
       -webkit-background-clip: text;
       background-clip: text;
-      filter: drop-shadow(0 2px 15px rgba(255, 20, 147, 0.4)) drop-shadow(0 0 40px rgba(255, 105, 180, 0.15));
-      max-width: 85%;
-    }
-
-    .lyric-line.visible {
+      color: transparent;
+      filter: drop-shadow(0 2px 15px rgba(255, 20, 147, 0.5)) drop-shadow(0 0 40px rgba(255, 105, 180, 0.2));
+      transform: scale(1);
       opacity: 1;
-      transform: translateY(0) translateZ(0);
     }
 
-    .lyric-line.exit {
-      opacity: 0;
-      transform: translateY(-20px) translateZ(0);
-      transition: opacity 0.6s cubic-bezier(0.4, 0, 1, 1), transform 0.6s cubic-bezier(0.4, 0, 1, 1);
+    .lyric-line.passed {
+      opacity: 0.15; /* Letras que ya pasaron son aún más tenues */
+      transform: scale(0.85);
     }
 
     /* ===== KEYFRAMES ===== */
@@ -314,7 +309,8 @@
     @keyframes zoneSlideIn {
       to {
         opacity: 1;
-        transform: translateX(0) scale(1);
+        /* Gira un poco hacia la izquierda, dando perspectiva 3D */
+        transform: perspective(1200px) rotateY(12deg) rotateX(4deg) translateX(0) scale(1);
       }
     }
 
@@ -334,32 +330,32 @@
   </style>
 </head>
 <body>
-  <div class="header">
-    <h1>✨ Título de tu experiencia ✨</h1>
-  </div>
-
   <div class="container">
     <div class="content">
       <!-- Audio sincronizado -->
       <audio id="audioPlayer" preload="auto" src="TeQuieroMuchoMucho-RioRoma.m4a"></audio>
 
-      <!-- ZONA 1: Imágenes directas, sin contenedor interno -->
+      <!-- ZONA 1: Imágenes directas con perspectiva 3D -->
       <div class="zone-1">
         <div class="image-slide active" style="background-image: url('img/nos1.jpg');"></div>
       </div>
 
-      <!-- ZONA 2: Letras flotantes con profundidad -->
+      <!-- ZONA 2: Letras flotantes (Sin contenedor) -->
       <div class="zone-2" id="zone2">
-        <!-- Corazones flotantes de fondo -->
+        <!-- Corazones flotantes desde abajo -->
         <div class="floating-hearts" id="floatingHearts"></div>
 
         <div class="intro-section" id="introSection">
-          <h2 class="intro-title">Título aquí</h2>
-          <p class="intro-text">Descripción aquí</p>
+          <h2 class="intro-title">Gracias Por Hacer Mi Vida Mejor, Mass Feliz y Llena de Amor</h2>
+          <p class="intro-text">Eres lo mejor que me ha pasado en la vida y la mas hermosa niña del mundo, te amo mucho mucho...</p>
           <button class="start-btn" onclick="startShow()">▶ Iniciar</button>
         </div>
 
-        <div class="lyric-wrapper" id="lyricWrapper" style="display: none;"></div>
+        <div class="lyric-wrapper" id="lyricWrapper">
+          <div class="lyric-scroll-container" id="lyricScroll">
+            <!-- Las letras se inyectan aquí -->
+          </div>
+        </div>
       </div>
     </div>
   </div>
@@ -442,7 +438,6 @@
     let currentImageIndex = -1;
     let currentLyricIndex = -1;
     let currentSlide = null;
-    let currentLyricEl = null;
 
     // ===== CORAZONES FLOTANTES =====
     function createFloatingHearts() {
@@ -454,14 +449,24 @@
         heart.className = 'floating-heart';
         heart.textContent = hearts[Math.floor(Math.random() * hearts.length)];
         heart.style.left = Math.random() * 100 + '%';
-        heart.style.fontSize = (0.6 + Math.random() * 1.2) + 'rem';
-        heart.style.animationDuration = (8 + Math.random() * 12) + 's';
-        heart.style.animationDelay = (Math.random() * 15) + 's';
+        heart.style.fontSize = (0.8 + Math.random() * 1.5) + 'rem';
+        heart.style.animationDuration = (8 + Math.random() * 10) + 's';
+        heart.style.animationDelay = (Math.random() * 8) + 's';
         container.appendChild(heart);
       }
     }
 
     createFloatingHearts();
+
+    // ===== INICIALIZAR LETRAS =====
+    const scrollContainer = document.getElementById('lyricScroll');
+    lyricTimeline.forEach((lyric, index) => {
+      const el = document.createElement('div');
+      el.className = 'lyric-line';
+      el.textContent = lyric.text;
+      el.id = `lyric-${index}`;
+      scrollContainer.appendChild(el);
+    });
 
     // ===== ACTUALIZACIÓN =====
     function updateShow(currentTimeMs) {
@@ -470,7 +475,6 @@
     }
 
     function updateImage(currentTimeMs) {
-      // Buscar qué imagen corresponde al tiempo actual
       let newIndex = -1;
       for (let i = 0; i < imagesTimeline.length; i++) {
         const img = imagesTimeline[i];
@@ -483,7 +487,6 @@
       if (newIndex !== currentImageIndex) {
         const container = document.querySelector('.zone-1');
 
-        // Animar salida de la imagen actual
         if (currentSlide) {
           const oldSlide = currentSlide;
           oldSlide.classList.remove('active');
@@ -499,7 +502,6 @@
           const newSlide = createImageSlide(imagesTimeline[newIndex].src);
           container.appendChild(newSlide);
 
-          // Forzar reflow y animar entrada
           newSlide.offsetHeight;
           requestAnimationFrame(() => {
             newSlide.classList.add('active');
@@ -517,7 +519,28 @@
       slide.className = 'image-slide';
 
       if (src.includes('/') || src.includes('.')) {
-        slide.style.backgroundImage = `url('${src}')`;
+        const videoExtensions = ['.mp4', '.webm', '.ogg', '.mov'];
+        const isVideo = videoExtensions.some(ext => src.toLowerCase().endsWith(ext));
+
+        if (isVideo) {
+          const video = document.createElement('video');
+          video.src = src;
+          video.autoplay = true;
+          video.loop = true;
+          video.muted = true;
+          video.playsInline = true;
+          // Estilos para que el video cubra el div como si fuera background-size: cover
+          video.style.position = 'absolute';
+          video.style.top = '0';
+          video.style.left = '0';
+          video.style.width = '100%';
+          video.style.height = '100%';
+          video.style.objectFit = 'cover';
+          video.style.zIndex = '-1';
+          slide.appendChild(video);
+        } else {
+          slide.style.backgroundImage = `url('${src}')`;
+        }
       } else {
         slide.classList.add('no-image');
         slide.textContent = src;
@@ -527,50 +550,56 @@
     }
 
     function updateLyric(currentTimeMs) {
-      // Buscar qué lyric corresponde al tiempo actual
       let newIndex = -1;
       for (let i = 0; i < lyricTimeline.length; i++) {
-        const lyric = lyricTimeline[i];
-        if (currentTimeMs >= lyric.start && currentTimeMs <= lyric.end) {
+        if (currentTimeMs >= lyricTimeline[i].start) {
           newIndex = i;
+        } else {
           break;
         }
       }
 
-      // Solo actuar si cambió el índice
       if (newIndex !== currentLyricIndex) {
-        const wrapper = document.getElementById('lyricWrapper');
-
-        // Si había un lyric visible, animarlo para salir
-        if (currentLyricEl) {
-          const oldEl = currentLyricEl;
-          oldEl.classList.remove('visible');
-          oldEl.classList.add('exit');
-          setTimeout(() => {
-            if (oldEl.parentNode) oldEl.parentNode.removeChild(oldEl);
-          }, 650);
-        }
-
         currentLyricIndex = newIndex;
+        
+        // Actualizar clases de las letras
+        const allLines = document.querySelectorAll('.lyric-line');
+        allLines.forEach((el, idx) => {
+          if (idx === newIndex) {
+            el.classList.add('active');
+            el.classList.remove('passed');
+          } else if (idx < newIndex) {
+            el.classList.remove('active');
+            el.classList.add('passed');
+          } else {
+            el.classList.remove('active');
+            el.classList.remove('passed');
+          }
+        });
 
-        // Si hay un nuevo lyric, mostrarlo
+        // Hacer Scroll Suave (estilo Spotify)
+        const wrapper = document.getElementById('lyricWrapper');
+        const scrollContainer = document.getElementById('lyricScroll');
+        
         if (newIndex >= 0) {
-          const lyricData = lyricTimeline[newIndex];
-          const lyricEl = document.createElement('div');
-          lyricEl.className = 'lyric-line';
-          lyricEl.textContent = lyricData.text;
-
-          wrapper.appendChild(lyricEl);
-
-          // Forzar reflow y animar entrada
-          lyricEl.offsetHeight;
-          requestAnimationFrame(() => {
-            lyricEl.classList.add('visible');
-          });
-
-          currentLyricEl = lyricEl;
+          const activeEl = document.getElementById(`lyric-${newIndex}`);
+          if (activeEl) {
+            const wrapperHeight = wrapper.offsetHeight;
+            const elOffsetTop = activeEl.offsetTop;
+            const elHeight = activeEl.offsetHeight;
+            
+            // Calcular translateY para centrar el elemento activo en el wrapper
+            const translateY = (wrapperHeight / 2) - (elOffsetTop + elHeight / 2);
+            scrollContainer.style.transform = `translateY(${translateY}px)`;
+          }
         } else {
-          currentLyricEl = null;
+          // Si estamos antes de la primera letra, posicionar al inicio suavemente
+          const firstEl = document.getElementById(`lyric-0`);
+          if (firstEl) {
+            const wrapperHeight = wrapper.offsetHeight;
+            const translateY = (wrapperHeight / 2) - (firstEl.offsetTop - 60);
+            scrollContainer.style.transform = `translateY(${translateY}px)`;
+          }
         }
       }
     }
@@ -580,7 +609,6 @@
       startTime = Date.now();
       pausedTime = 0;
 
-      // Reproducir audio
       const audio = document.getElementById('audioPlayer');
       audio.currentTime = 0;
       audio.play();
@@ -590,9 +618,10 @@
       introSection.style.opacity = '0';
       introSection.style.transform = 'translateY(-20px)';
 
+      document.getElementById('lyricWrapper').classList.add('visible');
+
       setTimeout(() => {
         introSection.style.display = 'none';
-        document.getElementById('lyricWrapper').style.display = 'flex';
       }, 600);
 
       updateShow(0);
@@ -604,7 +633,6 @@
         const elapsedMs = Date.now() - startTime + pausedTime;
         updateShow(elapsedMs);
 
-        // Detener si ya pasó la última lyric y la última imagen
         const lastLyricEnd = lyricTimeline[lyricTimeline.length - 1].end;
         const lastImageEnd = imagesTimeline[imagesTimeline.length - 1].end;
         const maxTime = Math.max(lastLyricEnd, lastImageEnd);
@@ -615,14 +643,126 @@
           return;
         }
 
-        animationFrameId = requestAnimationFrame(animationLoop);
+        animationFrameId = requestAnimationFrame(requestAnimationFrame(animationLoop));
       }
     }
 
-    // Mostrar primera imagen placeholder
-    const container = document.querySelector('.zone-1');
+    const containerZone1 = document.querySelector('.zone-1');
     const initialSlide = document.querySelector('.image-slide');
     currentSlide = initialSlide;
+  </script>
+
+  <!-- ♡ Navegación por Swipe — Solo Móvil/Tablet ♡ -->
+  <script>
+    (function () {
+      var isMobile =
+        /Android|iPhone|iPad|iPod|Mobile/i.test(navigator.userAgent) ||
+        ("ontouchstart" in window && window.innerWidth <= 1024);
+      if (!isMobile) return;
+
+      var PAGE_NEXT = "https://jesusgutzvil.github.io/amolshitaEmosha.github.io/";
+      var PAGE_PREV = "https://jesusgutzvil.github.io/pocoyosita.github.io/";
+      var touchStartY = 0;
+      var navigating = false;
+      var MIN_SWIPE = 58;
+
+      function atBottom() {
+        return (
+          window.scrollY + window.innerHeight >=
+          document.documentElement.scrollHeight - 12
+        );
+      }
+      function atTop() {
+        return window.scrollY <= 2;
+      }
+
+      function goToPage(url) {
+        if (navigating) return;
+        navigating = true;
+        var ov = document.createElement("div");
+        ov.style.cssText = [
+          "position:fixed;inset:0;z-index:999999;",
+          "background:linear-gradient(135deg,#1a0a12,#2d0f1e);",
+          "display:flex;align-items:center;justify-content:center;",
+          "flex-direction:column;gap:12px;",
+          "opacity:0;transition:opacity 0.5s ease;pointer-events:none;",
+        ].join("");
+        ov.innerHTML =
+          '<span style="font-size:3.5rem;animation:hb .6s ease-in-out infinite;">💕</span>' +
+          "<span style=\"font-family:'Montserrat',sans-serif;font-size:1.2rem;color:#ffb6c1;letter-spacing:2px;\">cambiando de página…</span>";
+        var style = document.createElement("style");
+        style.textContent =
+          "@keyframes hb{0%,100%{transform:scale(1)}50%{transform:scale(1.25)}}";
+        document.head.appendChild(style);
+        document.body.appendChild(ov);
+        requestAnimationFrame(function () {
+          ov.style.opacity = "1";
+        });
+        setTimeout(function () {
+          window.location.href = url;
+        }, 650);
+      }
+
+      function createEdgeHint(position) {
+        var hint = document.createElement("div");
+        var isBottom = position === "bottom";
+        hint.style.cssText = [
+          "position:fixed;" + position + ":0;left:0;right:0;z-index:9998;",
+          "padding:10px;text-align:center;pointer-events:none;",
+          "background:linear-gradient(" +
+            (isBottom ? "0" : "180") +
+            "deg,rgba(45,15,30,0.95),transparent);",
+          "opacity:0;transition:opacity 0.3s;",
+          "font-family:'Montserrat',sans-serif;font-size:11px;",
+          "letter-spacing:2px;text-transform:uppercase;color:#ff69b4;",
+        ].join("");
+        hint.textContent = isBottom
+          ? "↓ siguiente página"
+          : "↑ anterior página";
+        document.body.appendChild(hint);
+        return hint;
+      }
+      var bottomHint = createEdgeHint("bottom");
+      var topHint = createEdgeHint("top");
+
+      document.addEventListener(
+        "touchstart",
+        function (e) {
+          touchStartY = e.touches[0].clientY;
+        },
+        { passive: true }
+      );
+
+      document.addEventListener(
+        "touchmove",
+        function (e) {
+          var dy = touchStartY - e.touches[0].clientY;
+          if (dy > 20 && atBottom()) {
+            bottomHint.style.opacity = "1";
+            topHint.style.opacity = "0";
+          } else if (dy < -20 && atTop()) {
+            topHint.style.opacity = "1";
+            bottomHint.style.opacity = "0";
+          } else {
+            bottomHint.style.opacity = "0";
+            topHint.style.opacity = "0";
+          }
+        },
+        { passive: true }
+      );
+
+      document.addEventListener(
+        "touchend",
+        function (e) {
+          bottomHint.style.opacity = "0";
+          topHint.style.opacity = "0";
+          var dy = touchStartY - e.changedTouches[0].clientY;
+          if (dy > MIN_SWIPE && atBottom()) goToPage(PAGE_NEXT);
+          else if (dy < -MIN_SWIPE && atTop()) goToPage(PAGE_PREV);
+        },
+        { passive: true }
+      );
+    })();
   </script>
 </body>
 </html>
