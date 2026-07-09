@@ -1,11 +1,15 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>7 Meses</title>
-  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🩷</text></svg>">
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;700;800&family=Playfair+Display:wght@400;700;900&family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <link rel="icon"
+    href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🩷</text></svg>">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;700;800&family=Playfair+Display:wght@400;700;900&family=Inter:wght@300;400;600;700&display=swap"
+    rel="stylesheet">
   <style>
     * {
       margin: 0;
@@ -50,7 +54,8 @@
 
     .content {
       display: grid;
-      grid-template-columns: 4fr 6fr; /* Modificado: 40% imágenes, 60% texto para dar más espacio a la letra */
+      grid-template-columns: 4fr 6fr;
+      /* Modificado: 40% imágenes, 60% texto para dar más espacio a la letra */
       gap: 40px;
       height: 100%;
     }
@@ -68,7 +73,7 @@
       transform-style: preserve-3d;
       /* Estado inicial de la animación */
       transform: perspective(1200px) rotateY(12deg) rotateX(4deg) translateX(-60px) scale(0.95);
-      background: rgba(0,0,0,0.2);
+      background: rgba(0, 0, 0, 0.2);
     }
 
     .image-slide {
@@ -129,7 +134,8 @@
 
     .floating-heart {
       position: absolute;
-      bottom: -40px; /* Inician desde abajo del contenedor */
+      bottom: -40px;
+      /* Inician desde abajo del contenedor */
       opacity: 0;
       animation: floatHeart linear infinite;
       filter: blur(0.5px);
@@ -140,15 +146,20 @@
         opacity: 0;
         transform: translateY(0) scale(0.5);
       }
+
       20% {
-        opacity: 0.6; /* Entran con degradado subiendo opacidad */
+        opacity: 0.6;
+        /* Entran con degradado subiendo opacidad */
       }
+
       80% {
         opacity: 0.6;
       }
+
       100% {
         opacity: 0;
-        transform: translateY(-80vh) scale(1.2); /* Flotan hacia arriba */
+        transform: translateY(-80vh) scale(1.2);
+        /* Flotan hacia arriba */
       }
     }
 
@@ -214,7 +225,7 @@
       left: -100%;
       width: 100%;
       height: 100%;
-      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+      background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
       transition: left 0.5s ease;
     }
 
@@ -266,7 +277,7 @@
       transition: transform 0.6s cubic-bezier(0.25, 1, 0.5, 1);
       transform: translateY(0);
       /* Padding para permitir centrar la primera y última línea */
-      padding: 50vh 0; 
+      padding: 50vh 0;
     }
 
     .lyric-line {
@@ -277,14 +288,16 @@
       padding: 15px 0;
       font-size: 1.25rem;
       font-weight: 700;
-      color: rgba(255, 255, 255, 0.3); /* Letras inactivas más oscuras */
+      color: rgba(255, 255, 255, 0.3);
+      /* Letras inactivas más oscuras */
       transition: all 0.5s cubic-bezier(0.25, 1, 0.5, 1);
       transform: scale(0.9);
       cursor: default;
     }
 
     .lyric-line.active {
-      font-size: 2.1rem; /* Letra actual brillante y grande */
+      font-size: 2.1rem;
+      /* Letra actual brillante y grande */
       background: linear-gradient(180deg, #ffffff 0%, #ffcce0 100%);
       -webkit-background-clip: text;
       background-clip: text;
@@ -295,7 +308,8 @@
     }
 
     .lyric-line.passed {
-      opacity: 0.15; /* Letras que ya pasaron son aún más tenues */
+      opacity: 0.15;
+      /* Letras que ya pasaron son aún más tenues */
       transform: scale(0.85);
     }
 
@@ -330,6 +344,7 @@
     }
   </style>
 </head>
+
 <body>
   <div class="container">
     <div class="content">
@@ -377,87 +392,87 @@
     // ===== CONFIGURACIÓN =====
     // img: ['ruta', tiempoInicio, tiempoFin]
     const imagesTimeline = [
-      { src: 'img/nos00.jpg',        start: 0,      end: 6000  },
-      { src: 'img/nos01.jpg',        start: 6000,   end: 12000 },
-      { src: 'img/nos02.jpg',        start: 12000,  end: 18000 },
-      { src: 'img/nos03.jpg',        start: 18000,  end: 24000 },
-      { src: 'img/dalita.jpg',       start: 24000,  end: 30000 },
-      { src: 'img/dalita2.jpg',      start: 30000,  end: 36000 },
-      { src: 'img/dalia1.jpg',       start: 36000,  end: 42000 },
-      { src: 'img/dalitapiquiña.jpg',start: 42000,  end: 48000 },
-      { src: 'img/amolshita.jpg',    start: 48000,  end: 54000 },
-      { src: 'img/nos4.jpg',         start: 54000,  end: 60000 },
-      { src: 'img/nos5.jpg',         start: 60000,  end: 66000 },
-      { src: 'img/nos7.jpg',         start: 66000,  end: 72000 },
-      { src: 'img/nos8.jpg',         start: 72000,  end: 78000 },
-      { src: 'img/nos9.jpg',         start: 78000,  end: 84000 },
-      { src: 'img/nos10.jpg',        start: 84000,  end: 90000 },
-      { src: 'img/nos11.jpg',        start: 90000,  end: 96000 },
-      { src: 'img/nos12.jpg',        start: 96000,  end: 102000 },
-      { src: 'img/nos13.jpg',        start: 102000, end: 108000 },
-      { src: 'img/nos14.jpg',        start: 108000, end: 114000 },
-      { src: 'img/nos15.jpg',        start: 114000, end: 120000 },
-      { src: 'img/nos16.jpg',        start: 120000, end: 126000 },
-      { src: 'img/nos17.jpg',        start: 126000, end: 132000 },
-      { src: 'img/nos18.jpg',        start: 132000, end: 138000 },
-      { src: 'img/nos19.jpg',        start: 138000, end: 144000 },
-      { src: 'img/nos20.jpg',        start: 144000, end: 150000 },
-      { src: 'img/video.mp4',        start: 150000, end: 170000 },
+      { src: 'img/nos00.jpg', start: 0, end: 6000 },
+      { src: 'img/nos01.jpg', start: 6000, end: 12000 },
+      { src: 'img/nos02.jpg', start: 12000, end: 18000 },
+      { src: 'img/nos03.jpg', start: 18000, end: 24000 },
+      { src: 'img/dalita.jpg', start: 24000, end: 30000 },
+      { src: 'img/dalita2.jpg', start: 30000, end: 36000 },
+      { src: 'img/dalia1.jpg', start: 36000, end: 42000 },
+      { src: 'img/dalitapiquiña.jpg', start: 42000, end: 48000 },
+      { src: 'img/amolshita.jpg', start: 48000, end: 54000 },
+      { src: 'img/nos4.jpg', start: 54000, end: 60000 },
+      { src: 'img/nos5.jpg', start: 60000, end: 66000 },
+      { src: 'img/nos7.jpg', start: 66000, end: 72000 },
+      { src: 'img/nos8.jpg', start: 72000, end: 78000 },
+      { src: 'img/nos9.jpg', start: 78000, end: 84000 },
+      { src: 'img/nos10.jpg', start: 84000, end: 90000 },
+      { src: 'img/nos11.jpg', start: 90000, end: 96000 },
+      { src: 'img/nos12.jpg', start: 96000, end: 102000 },
+      { src: 'img/nos13.jpg', start: 102000, end: 108000 },
+      { src: 'img/nos14.jpg', start: 108000, end: 114000 },
+      { src: 'img/nos15.jpg', start: 114000, end: 120000 },
+      { src: 'img/nos16.jpg', start: 120000, end: 126000 },
+      { src: 'img/nos17.jpg', start: 126000, end: 132000 },
+      { src: 'img/nos18.jpg', start: 132000, end: 138000 },
+      { src: 'img/nos19.jpg', start: 138000, end: 144000 },
+      { src: 'img/nos20.jpg', start: 144000, end: 150000 },
+      { src: 'img/video.mp4', start: 150000, end: 170000 },
     ];
 
     // letra: ['texto', tiempoIn, tiempoOut]
     const lyricTimeline = [
       // Verso 1
-      { text: 'Ya sé que no hay reglas', start: 7000, end: 8400 },
-      { text: 'Ni en el amor, ni en la amistad', start: 9500, end: 15000 },
-      { text: 'Lo que es muy importante', start: 16000, end: 18300 },
-      { text: 'Es hablarse con honestidad', start: 18500, end: 24500 },
-      { text: 'Por eso hoy te traigo', start: 25000, end: 27500 },
-      { text: 'Unas palabras que regalarte', start: 28000, end: 34000 },
-      { text: 'No soy ningún poeta', start: 34300, end: 38500 },
-      { text: 'Ni busco impresionarte', start: 38600, end: 42500 },
+      { text: 'Ya sé que no hay reglas', start: 8500, end: 9900 },
+      { text: 'Ni en el amor, ni en la amistad', start: 11000, end: 16500 },
+      { text: 'Lo que es muy importante', start: 17500, end: 19800 },
+      { text: 'Es hablarse con honestidad', start: 20000, end: 26000 },
+      { text: 'Por eso hoy te traigo', start: 26500, end: 29000 },
+      { text: 'Unas palabras que regalarte', start: 29500, end: 35500 },
+      { text: 'No soy ningún poeta', start: 35800, end: 40000 },
+      { text: 'Ni busco impresionarte', start: 40100, end: 44000 },
       // Coro 1
-      { text: 'Es que me gustas tú', start: 43000, end: 48000 },
-      { text: 'Me haces feliz en un segundo', start: 48500, end: 51500 },
-      { text: 'No sé si sea tu luz', start: 52000, end: 57000 },
-      { text: 'Pero te veo y me quedo mudo', start: 57500, end: 60000 },
-      { text: 'Oh, baby, I Love You', start: 61500, end: 64500 },
-      { text: 'Yo quiero que te quedes en mi mundo', start: 65000, end: 70000 },
-      { text: 'Y quiero confesarte que', start: 70500, end: 73000 },
-      { text: 'Aunque te conozco poco', start: 73500, end: 78000 },
-      { text: 'Ya te quiero Mucho', start: 78500, end: 82000 },
-      { text: '¡Mucho, Mucho, Mucho!', start: 82500, end: 89500 },
+      { text: 'Es que me gustas tú', start: 44500, end: 49500 },
+      { text: 'Me haces feliz en un segundo', start: 50000, end: 53000 },
+      { text: 'No sé si sea tu luz', start: 53500, end: 58500 },
+      { text: 'Pero te veo y me quedo mudo', start: 59000, end: 61500 },
+      { text: 'Oh, baby, I Love You', start: 63000, end: 66000 },
+      { text: 'Yo quiero que te quedes en mi mundo', start: 66500, end: 71500 },
+      { text: 'Y quiero confesarte que', start: 72000, end: 74500 },
+      { text: 'Aunque te conozco poco', start: 75000, end: 79500 },
+      { text: 'Ya te quiero Mucho', start: 80000, end: 83500 },
+      { text: '¡Mucho, Mucho, Mucho!', start: 84000, end: 91000 },
       // Verso 2
-      { text: 'No vayas a pensar', start: 90000, end: 92000 },
-      { text: 'Que es una declaración casual', start: 92500, end: 98500 },
-      { text: 'No busco una respuesta', start: 99000, end: 101000 },
-      { text: 'Busco que tú sepas, nada más', start: 101500, end: 105000 },
+      { text: 'No vayas a pensar', start: 91500, end: 93500 },
+      { text: 'Que es una declaración casual', start: 94000, end: 100000 },
+      { text: 'No busco una respuesta', start: 100500, end: 102500 },
+      { text: 'Busco que tú sepas, nada más', start: 103000, end: 106500 },
       // Coro 2
-      { text: 'Que me gustas tú', start: 106000, end: 110500 },
-      { text: 'Me haces feliz en un segundo', start: 110000, end: 114500 },
-      { text: 'No sé si sea tu luz', start: 114600, end: 120000 },
-      { text: 'Pero te veo y me quedo mudo', start: 120500, end: 123500 },
-      { text: 'Oh, baby, I Love You', start: 123600, end: 127600 },
-      { text: 'Yo quiero que te quedes en mi mundo', start: 128700, end: 132500 },
-      { text: 'Y quiero confesarte que', start: 132600, end: 136400 },
-      { text: 'Aunque te conozco poco', start: 136500, end: 141000 },
+      { text: 'Que me gustas tú', start: 107500, end: 112000 },
+      { text: 'Me haces feliz en un segundo', start: 111500, end: 116000 },
+      { text: 'No sé si sea tu luz', start: 116100, end: 121500 },
+      { text: 'Pero te veo y me quedo mudo', start: 122000, end: 125000 },
+      { text: 'Oh, baby, I Love You', start: 125100, end: 129100 },
+      { text: 'Yo quiero que te quedes en mi mundo', start: 130200, end: 134000 },
+      { text: 'Y quiero confesarte que', start: 134100, end: 137900 },
+      { text: 'Aunque te conozco poco', start: 138000, end: 142500 },
       // Puente
-      { text: 'Ya sé que tal vez te sorprenda', start: 141500, end: 143000 },
-      { text: 'Mi sinceridad', start: 143100, end: 148000 },
-      { text: 'Pero no hay nada de malo', start: 148400, end: 151000 },
-      { text: 'En decirte la verdad', start: 151500, end: 157000 },
+      { text: 'Ya sé que tal vez te sorprenda', start: 143000, end: 144500 },
+      { text: 'Mi sinceridad', start: 144600, end: 149500 },
+      { text: 'Pero no hay nada de malo', start: 149900, end: 152500 },
+      { text: 'En decirte la verdad', start: 153000, end: 158500 },
       // Coro final
-      { text: 'Y es que me gustas tú', start: 157300, end: 162500 },
-      { text: 'Me haces feliz en un segundo', start: 162600, end: 165700 },
-      { text: 'No sé si sea tu luz', start: 166000, end: 172000 },
-      { text: 'Pero te veo y me quedo mudo', start: 172300, end: 175000 },
-      { text: 'Oh, baby, I love you', start: 175500, end: 179200 },
-      { text: 'Yo quiero que te quedes en mi mundo', start: 179500, end: 184000 },
-      { text: 'Y quiero confesarte que', start: 184500, end: 188000 },
-      { text: 'Aunque te conozco poco', start: 188500, end: 192000 },
-      { text: 'Ya te quiero mucho', start: 192500, end: 197000 },
-      { text: '¡Mucho, mucho, mucho!', start: 197500, end: 201700 },
-      { text: '¡Pero mucho, mucho, mucho!', start: 201800, end: 221400 },
+      { text: 'Y es que me gustas tú', start: 158800, end: 164000 },
+      { text: 'Me haces feliz en un segundo', start: 164100, end: 167200 },
+      { text: 'No sé si sea tu luz', start: 167500, end: 173500 },
+      { text: 'Pero te veo y me quedo mudo', start: 173800, end: 176500 },
+      { text: 'Oh, baby, I love you', start: 177000, end: 180700 },
+      { text: 'Yo quiero que te quedes en mi mundo', start: 181000, end: 185500 },
+      { text: 'Y quiero confesarte que', start: 186000, end: 189500 },
+      { text: 'Aunque te conozco poco', start: 190000, end: 193500 },
+      { text: 'Ya te quiero mucho', start: 194000, end: 198500 },
+      { text: '¡Mucho, mucho, mucho!', start: 199000, end: 203200 },
+      { text: '¡Pero mucho, mucho, mucho!', start: 203300, end: 222900 },
     ];
 
     let isPlaying = false;
@@ -590,7 +605,7 @@
 
       if (newIndex !== currentLyricIndex) {
         currentLyricIndex = newIndex;
-        
+
         // Actualizar clases de las letras
         const allLines = document.querySelectorAll('.lyric-line');
         allLines.forEach((el, idx) => {
@@ -609,14 +624,14 @@
         // Hacer Scroll Suave (estilo Spotify)
         const wrapper = document.getElementById('lyricWrapper');
         const scrollContainer = document.getElementById('lyricScroll');
-        
+
         if (newIndex >= 0) {
           const activeEl = document.getElementById(`lyric-${newIndex}`);
           if (activeEl) {
             const wrapperHeight = wrapper.offsetHeight;
             const elOffsetTop = activeEl.offsetTop;
             const elHeight = activeEl.offsetHeight;
-            
+
             // Calcular translateY para centrar el elemento activo en el wrapper
             const translateY = (wrapperHeight / 2) - (elOffsetTop + elHeight / 2);
             scrollContainer.style.transform = `translateY(${translateY}px)`;
@@ -739,8 +754,8 @@
           "position:fixed;" + position + ":0;left:0;right:0;z-index:9998;",
           "padding:10px;text-align:center;pointer-events:none;",
           "background:linear-gradient(" +
-            (isBottom ? "0" : "180") +
-            "deg,rgba(45,15,30,0.95),transparent);",
+          (isBottom ? "0" : "180") +
+          "deg,rgba(45,15,30,0.95),transparent);",
           "opacity:0;transition:opacity 0.3s;",
           "font-family:'Montserrat',sans-serif;font-size:11px;",
           "letter-spacing:2px;text-transform:uppercase;color:#ff69b4;",
@@ -794,4 +809,5 @@
     })();
   </script>
 </body>
+
 </html>
