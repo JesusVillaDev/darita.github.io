@@ -4,6 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>7 Meses</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🩷</text></svg>">
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;700;800&family=Playfair+Display:wght@400;700;900&family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
   <style>
     * {
@@ -337,7 +338,7 @@
 
       <!-- ZONA 1: Imágenes directas con perspectiva 3D -->
       <div class="zone-1">
-        <div class="image-slide active" style="background-image: url('img/nos1.jpg');"></div>
+        <div class="image-slide active" style="background-image: url('img/nos00.jpg');"></div>
       </div>
 
       <!-- ZONA 2: Letras flotantes (Sin contenedor) -->
@@ -346,8 +347,20 @@
         <div class="floating-hearts" id="floatingHearts"></div>
 
         <div class="intro-section" id="introSection">
-          <h2 class="intro-title">Gracias Por Hacer Mi Vida Mejor, Mass Feliz y Llena de Amor</h2>
-          <p class="intro-text">Eres lo mejor que me ha pasado en la vida y la mas hermosa niña del mundo, te amo mucho mucho...</p>
+          <h2 class="intro-title">Gracias Por Hacerme La Vida Mucho Mas Feliz</h2>
+          <p class="intro-text">
+            Si sabes que te quiero?
+            Que te Amo?
+            Y que te adoro?
+            Y que eres la niña mas hermosa del universo? <br>
+            Eres una personita increible que me hace muy feliz,
+            cada dia que paso contigo es un regalo. <br>
+            Gracias por soportarme, por quererme,
+            por amarme y por estar en mi vida. <br>
+            Eres lo mas hermoso que me ha pasado, siempre te cuidare
+            y seras mi prioridad hoy, mañana y siempre sin importar cuando lo leas.
+            <br> <br>TE ADORO MAS DE LO QUE TE IMAGINAS PEQUEÑA PRECIOSA DE MI VIDA.
+          </p>
           <button class="start-btn" onclick="startShow()">▶ Iniciar</button>
         </div>
 
@@ -364,71 +377,87 @@
     // ===== CONFIGURACIÓN =====
     // img: ['ruta', tiempoInicio, tiempoFin]
     const imagesTimeline = [
-      { src: 'img/nos1.jpg', start: 0, end: 12000 },
-      { src: 'img/nos2.jpg', start: 12000, end: 24000 },
-      { src: 'img/dalita.jpg', start: 24000, end: 36000 },
-      { src: 'img/nos3.jpg', start: 36000, end: 48000 },
-      { src: 'img/amolshita.jpg', start: 48000, end: 60000 },
-      { src: 'img/nos4.jpg', start: 60000, end: 72000 },
-      { src: 'img/dalitapiquiña.jpg', start: 72000, end: 84000 },
-      { src: 'img/nos5.jpg', start: 84000, end: 96000 },
-      { src: 'img/nos6.jpg', start: 96000, end: 108000 },
-      { src: 'img/nos7.jpg', start: 108000, end: 130000 },
+      { src: 'img/nos00.jpg',        start: 0,      end: 6000  },
+      { src: 'img/nos01.jpg',        start: 6000,   end: 12000 },
+      { src: 'img/nos02.jpg',        start: 12000,  end: 18000 },
+      { src: 'img/nos03.jpg',        start: 18000,  end: 24000 },
+      { src: 'img/dalita.jpg',       start: 24000,  end: 30000 },
+      { src: 'img/dalita2.jpg',      start: 30000,  end: 36000 },
+      { src: 'img/dalia1.jpg',       start: 36000,  end: 42000 },
+      { src: 'img/dalitapiquiña.jpg',start: 42000,  end: 48000 },
+      { src: 'img/amolshita.jpg',    start: 48000,  end: 54000 },
+      { src: 'img/nos4.jpg',         start: 54000,  end: 60000 },
+      { src: 'img/nos5.jpg',         start: 60000,  end: 66000 },
+      { src: 'img/nos7.jpg',         start: 66000,  end: 72000 },
+      { src: 'img/nos8.jpg',         start: 72000,  end: 78000 },
+      { src: 'img/nos9.jpg',         start: 78000,  end: 84000 },
+      { src: 'img/nos10.jpg',        start: 84000,  end: 90000 },
+      { src: 'img/nos11.jpg',        start: 90000,  end: 96000 },
+      { src: 'img/nos12.jpg',        start: 96000,  end: 102000 },
+      { src: 'img/nos13.jpg',        start: 102000, end: 108000 },
+      { src: 'img/nos14.jpg',        start: 108000, end: 114000 },
+      { src: 'img/nos15.jpg',        start: 114000, end: 120000 },
+      { src: 'img/nos16.jpg',        start: 120000, end: 126000 },
+      { src: 'img/nos17.jpg',        start: 126000, end: 132000 },
+      { src: 'img/nos18.jpg',        start: 132000, end: 138000 },
+      { src: 'img/nos19.jpg',        start: 138000, end: 144000 },
+      { src: 'img/nos20.jpg',        start: 144000, end: 150000 },
+      { src: 'img/video.mp4',        start: 150000, end: 170000 },
     ];
 
     // letra: ['texto', tiempoIn, tiempoOut]
     const lyricTimeline = [
       // Verso 1
-      { text: 'Ya sé que no hay reglas', start: 1000, end: 4000 },
-      { text: 'Ni en el amor, ni en la amistad', start: 4500, end: 8000 },
-      { text: 'Lo que es muy importante', start: 8500, end: 12000 },
-      { text: 'Es hablarse con honestidad', start: 12500, end: 16000 },
-      { text: 'Por eso hoy te traigo', start: 16500, end: 19500 },
-      { text: 'Unas palabras que regalarte', start: 20000, end: 23500 },
-      { text: 'No soy ningún poeta', start: 24000, end: 27000 },
-      { text: 'Ni busco impresionarte', start: 27500, end: 31000 },
+      { text: 'Ya sé que no hay reglas', start: 7000, end: 8400 },
+      { text: 'Ni en el amor, ni en la amistad', start: 9500, end: 15000 },
+      { text: 'Lo que es muy importante', start: 16000, end: 18300 },
+      { text: 'Es hablarse con honestidad', start: 18500, end: 24500 },
+      { text: 'Por eso hoy te traigo', start: 25000, end: 27500 },
+      { text: 'Unas palabras que regalarte', start: 28000, end: 34000 },
+      { text: 'No soy ningún poeta', start: 34300, end: 38500 },
+      { text: 'Ni busco impresionarte', start: 38600, end: 42500 },
       // Coro 1
-      { text: 'Es que me gustas tú', start: 31500, end: 34500 },
-      { text: 'Me haces feliz en un segundo', start: 35000, end: 38500 },
-      { text: 'No sé si sea tu luz', start: 39000, end: 42000 },
-      { text: 'Pero te veo y me quedo mudo', start: 42500, end: 46000 },
-      { text: 'Oh, baby, I love you', start: 46500, end: 49500 },
-      { text: 'Yo quiero que te quedes en mi mundo', start: 50000, end: 54000 },
-      { text: 'Y quiero confesarte que', start: 54500, end: 57500 },
-      { text: 'Aunque te conozco poco', start: 58000, end: 61000 },
-      { text: 'Ya te quiero mucho', start: 61500, end: 64000 },
-      { text: '¡Mucho, mucho, mucho!', start: 64500, end: 68000 },
+      { text: 'Es que me gustas tú', start: 43000, end: 48000 },
+      { text: 'Me haces feliz en un segundo', start: 48500, end: 51500 },
+      { text: 'No sé si sea tu luz', start: 52000, end: 57000 },
+      { text: 'Pero te veo y me quedo mudo', start: 57500, end: 60000 },
+      { text: 'Oh, baby, I Love You', start: 61500, end: 64500 },
+      { text: 'Yo quiero que te quedes en mi mundo', start: 65000, end: 70000 },
+      { text: 'Y quiero confesarte que', start: 70500, end: 73000 },
+      { text: 'Aunque te conozco poco', start: 73500, end: 78000 },
+      { text: 'Ya te quiero Mucho', start: 78500, end: 82000 },
+      { text: '¡Mucho, Mucho, Mucho!', start: 82500, end: 89500 },
       // Verso 2
-      { text: 'No vayas a pensar', start: 69000, end: 72000 },
-      { text: 'Que es una declaración casual', start: 72500, end: 76000 },
-      { text: 'No busco una respuesta', start: 76500, end: 79500 },
-      { text: 'Busco que tú sepas, nada más', start: 80000, end: 84000 },
+      { text: 'No vayas a pensar', start: 90000, end: 92000 },
+      { text: 'Que es una declaración casual', start: 92500, end: 98500 },
+      { text: 'No busco una respuesta', start: 99000, end: 101000 },
+      { text: 'Busco que tú sepas, nada más', start: 101500, end: 105000 },
       // Coro 2
-      { text: 'Que me gustas tú', start: 84500, end: 87000 },
-      { text: 'Me haces feliz en un segundo', start: 87500, end: 91000 },
-      { text: 'No sé si sea tu luz', start: 91500, end: 94500 },
-      { text: 'Pero te veo y me quedo mudo', start: 95000, end: 98500 },
-      { text: 'Oh, baby, I love you', start: 99000, end: 102000 },
-      { text: 'Yo quiero que te quedes en mi mundo', start: 102500, end: 106000 },
-      { text: 'Y quiero confesarte que', start: 106500, end: 109000 },
-      { text: 'Aunque te conozco poco', start: 109500, end: 112500 },
+      { text: 'Que me gustas tú', start: 106000, end: 110500 },
+      { text: 'Me haces feliz en un segundo', start: 110000, end: 114500 },
+      { text: 'No sé si sea tu luz', start: 114600, end: 120000 },
+      { text: 'Pero te veo y me quedo mudo', start: 120500, end: 123500 },
+      { text: 'Oh, baby, I Love You', start: 123600, end: 127600 },
+      { text: 'Yo quiero que te quedes en mi mundo', start: 128700, end: 132500 },
+      { text: 'Y quiero confesarte que', start: 132600, end: 136400 },
+      { text: 'Aunque te conozco poco', start: 136500, end: 141000 },
       // Puente
-      { text: 'Ya sé que tal vez te sorprenda', start: 113000, end: 116500 },
-      { text: 'Mi sinceridad', start: 117000, end: 120000 },
-      { text: 'Pero no hay nada de malo', start: 120500, end: 124000 },
-      { text: 'En decirte la verdad', start: 124500, end: 128000 },
+      { text: 'Ya sé que tal vez te sorprenda', start: 141500, end: 143000 },
+      { text: 'Mi sinceridad', start: 143100, end: 148000 },
+      { text: 'Pero no hay nada de malo', start: 148400, end: 151000 },
+      { text: 'En decirte la verdad', start: 151500, end: 157000 },
       // Coro final
-      { text: 'Y es que me gustas tú', start: 128500, end: 131500 },
-      { text: 'Me haces feliz en un segundo', start: 132000, end: 135500 },
-      { text: 'No sé si sea tu luz', start: 136000, end: 139000 },
-      { text: 'Pero te veo y me quedo mudo', start: 139500, end: 143000 },
-      { text: 'Oh, baby, I love you', start: 143500, end: 146500 },
-      { text: 'Yo quiero que te quedes en mi mundo', start: 147000, end: 151000 },
-      { text: 'Y quiero confesarte que', start: 151500, end: 154500 },
-      { text: 'Aunque te conozco poco', start: 155000, end: 158000 },
-      { text: 'Ya te quiero mucho', start: 158500, end: 161500 },
-      { text: '¡Mucho, mucho, mucho!', start: 162000, end: 165000 },
-      { text: '¡Pero mucho, mucho, mucho!', start: 165500, end: 170000 },
+      { text: 'Y es que me gustas tú', start: 157300, end: 162500 },
+      { text: 'Me haces feliz en un segundo', start: 162600, end: 165700 },
+      { text: 'No sé si sea tu luz', start: 166000, end: 172000 },
+      { text: 'Pero te veo y me quedo mudo', start: 172300, end: 175000 },
+      { text: 'Oh, baby, I love you', start: 175500, end: 179200 },
+      { text: 'Yo quiero que te quedes en mi mundo', start: 179500, end: 184000 },
+      { text: 'Y quiero confesarte que', start: 184500, end: 188000 },
+      { text: 'Aunque te conozco poco', start: 188500, end: 192000 },
+      { text: 'Ya te quiero mucho', start: 192500, end: 197000 },
+      { text: '¡Mucho, mucho, mucho!', start: 197500, end: 201700 },
+      { text: '¡Pero mucho, mucho, mucho!', start: 201800, end: 221400 },
     ];
 
     let isPlaying = false;
